@@ -28,39 +28,28 @@ if (!window.$) {
 
 CKEDITOR.plugins.add('ruler', {
     init: function(editor) {
-        let options = {
-            values: 21,
-            start: 2,
-            end: 19,
-            step: 0.25,
-            width: 800
-        };
-        let padding = editor.config.padding;
-        if (!padding) {
-            padding = {
-                left: 2,
-                right: 19
-            };
-        }
+        let width = 800;
+        let configs = getConfigs(editor.config.ruler);
+
         editor.addContentsCss(this.path + 'styles/editor-iframe-styles.css');
         editor.on('instanceReady', function() {
             let $ckeContent = $(editor.element.$).siblings('.cke').find('.cke_contents');
             $ckeContent.prepend('<div id="cke_ruler_wrap"></div>');
             let range = document.getElementById('cke_ruler_wrap');
-            setPadding([padding.left, padding.right]);
+            setPadding([configs.sliders.left, configs.sliders.right]);
             noUiSlider.create(range, {
-                start: [padding.left, padding.right],
+                start: [configs.sliders.left, configs.sliders.right],
                 margin: 2,
                 connect: [true, false, true],
                 behaviour: 'drag',
-                step: options.step,
+                step: configs.step,
                 range: {
                     'min': 0,
-                    'max': options.values
+                    'max': configs.values
                 },
                 pips: {
                     mode: 'count',
-                    values: options.values,
+                    values: configs.values,
                     density: 2
                 }
             });
@@ -74,13 +63,67 @@ CKEDITOR.plugins.add('ruler', {
 
         function setPadding(values) {
             if (values) {
-                padding.left = parseFloat(values[0]);
-                padding.right = parseFloat(values[1]);
+                configs.sliders.left = parseFloat(values[0]);
+                configs.sliders.right = parseFloat(values[1]);
             }
-            let left = (options.width / options.values) * padding.left;
-            let right = (options.width / options.values) * (options.values - padding.right);
-            editor.document.getBody().setStyle('padding', '20px ' + right + 'px 20px ' + left + 'px');
-            editor.fire('updatePadding', padding);
+            let left = (width / configs.values) * configs.sliders.left;
+            let right = (width / configs.values) * (configs.values - configs.sliders.right);
+            editor.document.getBody().setStyle('padding', configs.padding.top + 'px ' + right + 'px ' + configs.padding.bottom + 'px ' + left + 'px');
+            editor.fire('updateRuler', configs.sliders);
+        }
+
+        function getConfigs(config) {
+            const defaultConfig = {
+                values: 21, // segment number of the ruler
+                step: 0.25, // accuracy of sliders
+                sliders: {
+                    left: 2, // left slider value
+                    right: 19 // right slider value (21-19 = 2)
+                },
+                padding: {
+                    top: 20, // top 'canvas' padding (px)
+                    bottom: 20 // bottom 'canvas' padding (px)
+                }
+            };
+            if (!config) {
+                // Oops, no configs
+                config = defaultConfig;
+            } else {
+                if (!config.sliders) {
+                    // Oops, no sliders info
+                    config.sliders = defaultConfig.sliders;
+                } else {
+                    if (!config.sliders.hasOwnProperty('left')) {
+                        config.sliders.left = defaultConfig.sliders.left;
+                    }
+                    if (!config.sliders.hasOwnProperty('right')) {
+                        config.sliders.right = defaultConfig.sliders.right;
+                    }
+                }
+                if (!config.padding) {
+                    // Oops, no padding info
+                    config.padding = defaultConfig.padding;
+                } else {
+                    if (!config.padding.hasOwnProperty('top')) {
+                        config.padding.top = defaultConfig.padding.top;
+                    }
+                    if (!config.padding.hasOwnProperty('bottom')) {
+                        config.padding.bottom = defaultConfig.padding.bottom;
+                    }
+                }
+                if (!config.hasOwnProperty('values')) {
+                    // Oops, no values info
+                    config.values = defaultConfig.values;
+                } else if (config.values < config.sliders.right) {
+                    // Oops, values is less then right slider value
+                    config.values = config.sliders.right;
+                }
+                if (!config.hasOwnProperty('step')) {
+                    // Oops, no step info
+                    config.step = defaultConfig.step;
+                }
+            }
+            return config;
         }
     }
 });
