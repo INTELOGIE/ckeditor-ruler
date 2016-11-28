@@ -1,7 +1,7 @@
 Ruler Plugin for CKEditor 4
 =============================
 
-A simple ruler plugin for CKEditor [CKEditor](http://ckeditor.com)
+A simple ruler plugin for [CKEditor](http://ckeditor.com)
 
 ## Demo
 [Demo page](https://lovata.github.io/ckeditor-ruler/)
@@ -50,7 +50,7 @@ editor.fire('updateRuler', { left: Number, right: Number });
 ```
 
 ## Browser Compatibility
-Originaly this plugin was build for an [Electron](https://github.com/electron/electron) application, so it wasn't tested other browsers
+Originaly this plugin was build for an [Electron](https://github.com/electron/electron) application, so it wasn't tested in other browsers
 
 
 
