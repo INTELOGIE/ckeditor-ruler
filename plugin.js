@@ -48,6 +48,11 @@ CKEDITOR.plugins.add('ruler', {
         editor.on('change', function(evt) {
             setPadding();
         });
+        editor.on('setRulerPadding', function(evt) {
+            setPadding([evt.data.left, evt.data.right]);
+            let range = document.getElementById('cke_ruler_wrap');
+            range.noUiSlider.set([evt.data.left, evt.data.right]);
+        });
 
         function setPadding(values) {
             if (values) {
