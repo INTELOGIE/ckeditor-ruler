@@ -49,6 +49,11 @@ Plugin dispatches <code>updateRuler</code> event as soon as any of slider's valu
 editor.fire('updateRuler', { left: Number, right: Number });
 ```
 
+Plugin subscribed on <code>setRulerPadding</code> editor's event, so you can fire the event to change ruler's values programmatically:
+```javascript
+editor.fire('setRulerPadding', { left: Number, right: Number });
+```
+
 ## Browser Compatibility
 Originaly this plugin was build for an [Electron](https://github.com/electron/electron) application, so it wasn't tested in other browsers
 
