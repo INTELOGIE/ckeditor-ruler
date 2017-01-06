@@ -1,5 +1,7 @@
 # Simple Ruler
 
+[![Build Status](https://travis-ci.org/lovata/ckeditor-ruler.svg?branch=master)](https://travis-ci.org/lovata/ckeditor-ruler)
+
 ## Description
 
 A ruler plugin for [CKEditor](http://ckeditor.com) displays the horizontal dimension of the page. You can modify it on the ruler using a mouse.
