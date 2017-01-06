@@ -1,8 +1,5 @@
 # Simple Ruler
 
-![CKEditor logo](docs/img/ckeditor-logo.svg)
-![CKEditor logo](docs/img/ruler-logo.svg)
-
 ## Description
 
 A ruler plugin for [CKEditor](http://ckeditor.com) displays the horizontal dimension of the page. You can modify it on the ruler using a mouse.
@@ -71,7 +68,6 @@ editor.fire('setRulerPadding', { left: Number, right: Number });
 Originally this plugin was build for an [Electron](https://github.com/electron/electron) library, therefore it wasn't tested in other browsers.
 
 ## License
-![LOVATA Group logo](docs/img/lovata-logo.svg)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![GNU GPL v3 logo](docs/img/gplv3-logo.svg)
 
 © 2016, [LOVATA Group, LLC](http://lovata.com) under GNU GPL v3.
 
