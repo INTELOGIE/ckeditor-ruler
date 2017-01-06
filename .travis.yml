@@ -1,7 +1,7 @@
 language: javascript
 install: true
 script:
-- zip -r ckeditor-ruler.zip ./
+- zip -r ckeditor-ruler ./ -x docs/\* -x .git/\* -x .gitignore -x .npmignore -x .travis.yml
 deploy:
   provider: releases
   api_key:
