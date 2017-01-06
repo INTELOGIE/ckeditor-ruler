@@ -1,4 +1,4 @@
 language: javascript
 install: true
 script:
-    - zip -r ckeditor-ruler.zip
+    - zip -r ckeditor-ruler.zip ./
