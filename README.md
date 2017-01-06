@@ -1,6 +1,6 @@
 # Simple Ruler
 
-[![Build Status](https://travis-ci.org/lovata/ckeditor-ruler.svg?branch=master)](https://travis-ci.org/lovata/ckeditor-ruler)
+[![Build Status](https://travis-ci.org/lovata/ckeditor-ruler.svg?branch=master)](https://travis-ci.org/lovata/ckeditor-ruler) [![npm version](https://badge.fury.io/js/ckeditor-ruler.svg)](https://badge.fury.io/js/ckeditor-ruler)
 
 ## Description
 
