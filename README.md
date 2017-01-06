@@ -1,34 +1,44 @@
-Ruler Plugin for CKEditor 4
-=============================
+# Simple Ruler
 
-A simple ruler plugin for [CKEditor](http://ckeditor.com)
+![CKEditor logo](docs/img/ckeditor-logo.svg)
+![CKEditor logo](docs/img/ruler-logo.svg)
+
+## Description
+
+A ruler plugin for [CKEditor](http://ckeditor.com) displays the horizontal dimension of the page. You can modify it on the ruler using a mouse.
 
 ## Demo
-[Demo page](https://lovata.github.io/ckeditor-ruler/)
+You can try it on the [demo page](https://lovata.github.io/ckeditor-ruler/).
 
 
 ## Getting Started
 
-#### Manual
+### Manual
 
-Add the ruler plugin to ckeditor. The simplest way to do this is by adding the following line to ckeditor's <code>config.js</code>:
-```javascript
+Add the Simple Ruller plugin to ckeditor. The easiest way to do this is by adding the following line to CKEditor's `config.js`:
+
+```js
 config.extraPlugins = 'ruler';
 ```
-#### npm
-Install <code>ckeditor-ruler</code> as a development dependency:
-```javascript
+### NPM
+
+Install `ckeditor-ruler` as a development dependency:
+
+```bash
 npm install ckeditor-ruler --save-dev
 ```
+
 Init CKEditor with the plugin:
-```javascript
+
+```js
 window.onload = function() {
     CKEDITOR.plugins.addExternal('ruler', '/node_modules/ckeditor-ruler/');
     CKEDITOR.config.extraPlugins = 'ruler';
     CKEDITOR.replace('editor');
 };
+
 ```
-## Plugin Options
+## Options
 ```javascript
 CKEDITOR.config.ruler = {
     values: 21,     // segment number of the ruler
@@ -43,25 +53,26 @@ CKEDITOR.config.ruler = {
     }
 };
 ```
+
 ## API
-Plugin dispatches <code>updateRuler</code> event as soon as any of slider's values were changed:
-```javascript
+Plugin dispatches `updateRuler` event as soon as any of slider's values have been changed:
+
+```js
 editor.fire('updateRuler', { left: Number, right: Number });
 ```
 
-Plugin subscribed on <code>setRulerPadding</code> editor's event, so you can fire the event to change ruler's values programmatically:
-```javascript
+Plugin is subscribed to `setRulerPadding` editor's event, so you can fire the event to change ruler's values programmatically:
+
+```js
 editor.fire('setRulerPadding', { left: Number, right: Number });
 ```
 
-## Browser Compatibility
-Originaly this plugin was build for an [Electron](https://github.com/electron/electron) application, so it wasn't tested in other browsers
-
-
+## Browser compatibility
+Originally this plugin was build for an [Electron](https://github.com/electron/electron) library, therefore it wasn't tested in other browsers.
 
 ## License
-Copyright (c) 2016, LOVATA
+![LOVATA Group logo](docs/img/lovata-logo.svg)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![GNU GPL v3 logo](docs/img/gplv3-logo.svg)
 
-Written by Aleksandra Shinkevich (https://github.com/neesoglasnaja)
+© 2016, [LOVATA Group, LLC](http://lovata.com) under GNU GPL v3.
 
-For licensing, see LICENSE.md
+Develped by [Aleksandra Shinkevich](https://github.com/neesoglasnaja).
