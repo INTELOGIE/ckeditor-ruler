@@ -1,9 +1,12 @@
 language: javascript
 install: true
 script:
-    - zip -r ckeditor-ruler.zip ./
+- zip -r ckeditor-ruler.zip ./
 deploy:
-    provider: releases
-    api_key: "85fe91b2929542b1d1d2deb04b62429ddfe1be56"
-    file: "ckeditor-ruler.zip"
-    skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: AFfs8SnHspwX+h/6YL8dj5HqrtDQpjXBYfDUepjZ0w4vPgkaXg4iaIMWpm00iKRpmhJGhBU7tBs6DB3aiWltYxfmIIb4LKWyBql6Ld90JpIcHBkKkX4l9t05IReMmSGDLL9WRBs8QGr6By/gnJViZu2D7Jbkd+SZlGxGpusbOrr9e+PkxekKbIpvU/m6BQuaL0Iads6I32JM56EIfs82bJTz6f+4f8GMfuPmJ3CQX2fowDv7uet/+5WGu0K2Lkxoz4jWzpMSU0njiD/7tIdkKYXmJOgsAyH8OrTvx/jQHb5GtV+3hGftbxk2gFcj3RV8KGXrx8TOojuIy2TwLztYDmu9+lR1zyxq6lGPHSOoc7a513UGtV85YhmYUqeBx9xT0yclB5oe94MguubhDBupd7YDUIfSdnTWdJFtcl5exCU1w8xvmLZvmGfIpbJEI+Wh5HZmAFmfYyFrPBmsr00389jmzkGtM1t4SqbZ2/6BO2Fuc6yqoI2Fk3uH2tUmGDrneQcEhrbGR3ftwFvzLghRRQAN7ZR8fcCk39dwZ/LbWcalkb9yTsYlL9BdBCZieVXCngBkkjKi/n9A8zXiGjKs7aDXpPED3TVyQoPs9U/tkgilyMDZLfWIWZCpI2y23s8WDukqoYL0YAlS54rBDH+zaXCKJDf5WB/r3ao1rLv26Y4=
+  file: ckeditor-ruler.zip
+  skip_cleanup: true
+  on:
+    repo: lovata/ckeditor-ruler
