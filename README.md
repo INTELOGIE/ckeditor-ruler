@@ -14,14 +14,14 @@ You can try it on the [demo page](https://lovata.github.io/ckeditor-ruler/).
 
 ### Manual
 
-Add the Simple Ruller plugin to ckeditor. The easiest way to do this is by adding the following line to CKEditor's `config.js`:
+[Download](http://ckeditor.com/addon/simple-ruler) the plugin from the official CKEditor add-ons list and enable them by editing `config.js`:
 
 ```js
 config.extraPlugins = 'ruler';
 ```
 ### NPM
 
-Install `ckeditor-ruler` as a development dependency:
+Install Simple Ruler as a development dependency:
 
 ```bash
 npm install ckeditor-ruler --save-dev
