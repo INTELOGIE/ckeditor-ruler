@@ -1,4 +1,3 @@
 language: javascript
 install: true
-# script: sudo -E su $USER -c 'COMMAND1; COMMAND2; COMMAND3'
 script: zip -r ckeditor-ruler.zip
