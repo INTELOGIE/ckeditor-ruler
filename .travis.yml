@@ -7,5 +7,3 @@ deploy:
     api_key: "85fe91b2929542b1d1d2deb04b62429ddfe1be56"
     file: "ckeditor-ruler.zip"
     skip_cleanup: true
-    on:
-        tags: true
