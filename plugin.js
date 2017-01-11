@@ -3,7 +3,7 @@
  * For licensing, see LICENSE.md
  *
  * A simple ruler plugin for CKEditor (http://ckeditor.com)
- * 
+ *
  * Require:
  * - nouislider (github.com/leongersen/noUiSlider) for ranging
  * - jquery (github.com/jquery/jquery) for DOM traversing
@@ -16,14 +16,14 @@ if (!window.$) {
 
 CKEDITOR.plugins.add('ruler', {
     init: function(editor) {
-        let width = 800;
-        let configs = getConfigs(editor.config.ruler);
+        var width = 800;
+        var configs = getConfigs(editor.config.ruler);
 
         editor.addContentsCss(this.path + 'styles/editor-iframe-styles.css');
         editor.on('instanceReady', function() {
-            let $ckeContent = $(editor.element.$).siblings('.cke').find('.cke_contents');
+            var $ckeContent = $(editor.element.$).siblings('.cke').find('.cke_contents');
             $ckeContent.prepend('<div id="cke_ruler_wrap"></div>');
-            let range = document.getElementById('cke_ruler_wrap');
+            var range = document.getElementById('cke_ruler_wrap');
             setPadding([configs.sliders.left, configs.sliders.right]);
             noUiSlider.create(range, {
                 start: [configs.sliders.left, configs.sliders.right],
@@ -50,7 +50,7 @@ CKEDITOR.plugins.add('ruler', {
         });
         editor.on('setRulerPadding', function(evt) {
             setPadding([evt.data.left, evt.data.right]);
-            let range = document.getElementById('cke_ruler_wrap');
+            var range = document.getElementById('cke_ruler_wrap');
             range.noUiSlider.set([evt.data.left, evt.data.right]);
         });
 
@@ -59,14 +59,14 @@ CKEDITOR.plugins.add('ruler', {
                 configs.sliders.left = parseFloat(values[0]);
                 configs.sliders.right = parseFloat(values[1]);
             }
-            let left = (width / configs.values) * configs.sliders.left;
-            let right = (width / configs.values) * (configs.values - configs.sliders.right);
+            var left = (width / configs.values) * configs.sliders.left;
+            var right = (width / configs.values) * (configs.values - configs.sliders.right);
             editor.document.getBody().setStyle('padding', configs.padding.top + 'px ' + right + 'px ' + configs.padding.bottom + 'px ' + left + 'px');
             editor.fire('updateRuler', configs.sliders);
         }
 
         function getConfigs(config) {
-            const defaultConfig = {
+            var defaultConfig = {
                 values: 21, // segment number of the ruler
                 step: 0.25, // accuracy of sliders
                 sliders: {
