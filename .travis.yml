@@ -6,12 +6,12 @@ script:
 - RESULT=$(java -jar ckbuilder.jar --no-ie-checks --verify-plugin ckeditor-ruler.zip)
 - java -jar ckbuilder.jar --no-ie-checks --verify-plugin ckeditor-ruler.zip
 - if [ $RESULT == 'OK' ];
--     then
--         echo -e '\e[42mTest passed!\e[42m'
--     else
--         echo -e '\e[41mTest failed!\e[41m'
--         exit 1
-- fi
+      then
+          echo -e '\e[42mTest passed!\e[42m'
+      else
+          echo -e '\e[41mTest failed!\e[41m'
+          exit 1
+  fi
 
 deploy:
   provider: releases
