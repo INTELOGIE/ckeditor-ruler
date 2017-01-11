@@ -3,7 +3,16 @@ install:
 - wget http://download.cksource.com/CKBuilder/2.3.1/ckbuilder.jar
 script:
 - zip -r ckeditor-ruler ./ -x docs/\* -x .git/\* -x .gitignore -x .npmignore -x .travis.yml
+- RESULT=$(java -jar ckbuilder.jar --no-ie-checks --verify-plugin ckeditor-ruler.zip)
 - java -jar ckbuilder.jar --no-ie-checks --verify-plugin ckeditor-ruler.zip
+- if [ $RESULT == 'OK' ];
+-     then
+-         echo -e '\e[42mTest passed!'
+-     else
+-         echo -e '\e[41mTest failed!'
+-         exit 1
+- fi
+
 deploy:
   provider: releases
   api_key:
