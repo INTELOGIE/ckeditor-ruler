@@ -3,6 +3,7 @@ install:
 - wget http://download.cksource.com/CKBuilder/2.3.1/ckbuilder.jar
 script:
 - zip -r ckeditor-ruler ./ -x docs/\* -x .git/\* -x .gitignore -x .npmignore -x .travis.yml
+- RETURNED=$(java -jar ckbuilder.jar --no-ie-checks --verify-plugin 1ckeditor-ruler.zip)
 - EXPECTED="OK"
 - java -jar ckbuilder.jar --no-ie-checks --verify-plugin ckeditor-ruler.zip
 - 'if [ \"$RETURNED\" = \"$EXPECTED\" ]
@@ -12,6 +13,7 @@ script:
         echo -e \"\e[41mTests FAILED\e[0m\"
     exit 1
   fi'
+
 
 deploy:
   provider: releases
