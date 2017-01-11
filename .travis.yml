@@ -5,13 +5,13 @@ script:
 - zip -r ckeditor-ruler ./ -x docs/\* -x .git/\* -x .gitignore -x .npmignore -x .travis.yml
 - EXPECTED="OK"
 - java -jar ckbuilder.jar --no-ie-checks --verify-plugin ckeditor-ruler.zip
-- if [ "$RETURNED" = "$EXPECTED" ] \
-    then \
-        echo -e "\e[42mTests PASSED\e[0m" \
-    else \
-        echo -e "\e[41mTests FAILED\e[0m" \
-    exit 1 \
-  fi
+- 'if [ "$RETURNED" = "$EXPECTED" ]
+    then
+        echo -e "\e[42mTests PASSED\e[0m"
+    else
+        echo -e "\e[41mTests FAILED\e[0m"
+    exit 1
+  fi'
 
 deploy:
   provider: releases
