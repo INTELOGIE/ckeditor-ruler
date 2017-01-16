@@ -9,7 +9,7 @@ install:
     - wget http://download.cksource.com/CKBuilder/2.3.1/ckbuilder.jar
 script:
     - NAME="ckeditor-ruler"
-    - zip -r $NAME ./ -x docs/\* -x .git/\* -x .gitignore -x .npmignore -x .travis.yml
+    - zip -r $NAME ./ -x docs/\* -x .git/\* -x .gitignore -x .npmignore -x .travis.yml -x ckbuilder.jar
     - TEST=$(java -jar ckbuilder.jar --no-ie-checks --verify-plugin $NAME.zip)
 before_deploy:
     - TAG=$(git symbolic-ref -q --short HEAD || git describe --tags --exact-match 2>/dev/null)
