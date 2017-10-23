@@ -18,9 +18,28 @@ CKEDITOR.plugins.add('ruler', {
     init: function(editor) {
         var width = 800;
         var configs = getConfigs(editor.config.ruler);
+        var mode = 'wysiwyg';
 
         editor.addContentsCss(this.path + 'styles/editor-iframe-styles.css');
-        editor.on('instanceReady', function() {
+        editor.on('instanceReady', onInit);
+        editor.on('change', function(evt) {
+            setPadding();
+        });
+        editor.on('setRulerPadding', function(evt) {
+            setPadding([evt.data.left, evt.data.right]);
+            var range = document.getElementById('cke_ruler_wrap');
+            range.noUiSlider.set([evt.data.left, evt.data.right]);
+        });
+        editor.on('mode', function() {
+            if (mode !== editor.mode && editor.mode === 'wysiwyg') {
+                onInit();
+            } else {
+                mode = editor.mode;
+            }
+        });
+
+        function onInit() {
+            mode = editor.mode;
             var $ckeContent = $(editor.element.$).siblings('.cke').find('.cke_contents');
             $ckeContent.prepend('<div id="cke_ruler_wrap"></div>');
             var range = document.getElementById('cke_ruler_wrap');
@@ -44,15 +63,7 @@ CKEDITOR.plugins.add('ruler', {
             range.noUiSlider.on('change', function(values) {
                 setPadding(values);
             });
-        });
-        editor.on('change', function(evt) {
-            setPadding();
-        });
-        editor.on('setRulerPadding', function(evt) {
-            setPadding([evt.data.left, evt.data.right]);
-            var range = document.getElementById('cke_ruler_wrap');
-            range.noUiSlider.set([evt.data.left, evt.data.right]);
-        });
+        }
 
         function setPadding(values) {
             if (values) {
